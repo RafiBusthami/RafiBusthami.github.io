@@ -136,6 +136,7 @@
     <div class="bar">
       <span class="left soft">
         <span>Yogyakarta, Indonesia</span>
+        <span id="clock">GMT+7</span>
       </span>
       <span class="right">
         <span>Universitas Gadjah Mada</span>
@@ -159,5 +160,14 @@
     </div>
 
   </main>
+  <script>
+    (function () {
+      var el = document.getElementById('clock');
+      var fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', hour12: false });
+      function tick() { el.textContent = fmt.format(new Date()) + ' WIB (GMT+7)'; }
+      tick();
+      setInterval(tick, 15000);
+    })();
+  </script>
 </body>
 </html>
